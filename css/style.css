@@ -1,0 +1,81 @@
+
+/* TIPS GENERATOR CSS */
+#tg {
+    background: white;
+    font-family: 'Source Sans Pro', sans-serif;
+    border-left: 3px solid rgba(238, 238, 238, 1);
+    border-top: 3px solid rgba(238, 238, 238, 1);
+    border-right: 3px solid rgba(154, 154, 154, 1);
+    border-bottom: 3px solid rgba(154, 154, 154, 1);
+}
+
+/* LEGEND BACKGROUND COLOR*/
+
+.legend918KISS {
+    background-color: rgba(96, 62, 168, 1);
+}
+
+.legendMEGA888 {
+    background-color:rgba(243, 156, 18, 1);
+}
+
+.legendPUSSY888 {
+    background-color: rgba(60, 141, 188, 1);
+}
+
+.legendXE88 {
+    background-color: rgba(0, 166, 90, 1);
+}
+
+/* MAIN */
+
+#main {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+}
+
+fieldset {
+    background-color: white;
+    width: 165px;
+    padding: 0;
+    border-radius: 3px;
+    margin-top: 4px;
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+legend {
+    color: white;
+    font-weight: 600;
+    padding: 0 5px;
+    border: 1px solid rgb(108, 108, 108);
+    border-radius: 3px;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+textarea {
+    width: 95%;
+    height: 105px;
+    resize: none;
+}
+
+.reroll {
+    background-color: #f5e050;
+    margin: 5px;
+}
+
+.btn-bottom {
+    display: flex;
+    align-items: center;
+}
+            
+.btn-bottom input {
+    height: 21px;
+    width: 50.82px;
+}
+            

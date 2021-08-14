@@ -3,10 +3,6 @@
 #tg {
     background: white;
     font-family: 'Source Sans Pro', sans-serif;
-    border-left: 3px solid rgba(238, 238, 238, 1);
-    border-top: 3px solid rgba(238, 238, 238, 1);
-    border-right: 3px solid rgba(154, 154, 154, 1);
-    border-bottom: 3px solid rgba(154, 154, 154, 1);
 }
 
 /* LEGEND BACKGROUND COLOR*/
@@ -33,12 +29,12 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: space-around;
+    justify-content: start;
 }
 
 fieldset {
     background-color: white;
-    width: 165px;
+    width: 180px;
     padding: 0;
     border-radius: 3px;
     margin-top: 4px;

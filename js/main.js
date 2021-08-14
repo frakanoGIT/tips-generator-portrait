@@ -24,7 +24,7 @@ function renderBox(labels, agentName) {
     // Create textarea element
     let textArea = document.createElement('textarea');
     textArea.setAttribute('class',`inArea${agentName}`);
-    textArea.innerHTML = "";
+    textArea.value = "";
     container.appendChild(textArea);
     // Create div element
     let divBtn = document.createElement('div');
@@ -50,7 +50,7 @@ function renderBox(labels, agentName) {
         let tipsRolled = '';
         // Remove Duplicates and prevent crash
         if (numInput > labels.length || numInput < 0) {
-            textArea.innerHTML = "Please input value between 1 \~ " + labels.length + "!";
+            textArea.value = "Please input value between 1 \~ " + labels.length + "!";
         } else {
             for (let n = numInput; n > 0;) {
                 let numGen = Math.floor(Math.random() * labels.length);
@@ -60,7 +60,7 @@ function renderBox(labels, agentName) {
                 }
             }
             numArray.forEach(el => tipsRolled+= `${labels[el]}\n`);
-            textArea.innerHTML = tipsRolled;
+            textArea.value = tipsRolled;
         }
 
     });

@@ -21,6 +21,12 @@ function renderBox(labels, agentName) {
     legend.setAttribute('class', `legend${agentName}`);
     legend.innerText = `${agentName}`;
     container.appendChild(legend);
+    // Create span element for counter click
+    let span = document.createElement('span');
+    var counter = 0;
+    span.setAttribute('class', 'counter');
+    span.innerText = `x${counter}`;
+    container.appendChild(span);
     // Create textarea element
     let textArea = document.createElement('textarea');
     textArea.setAttribute('class',`inArea${agentName}`);
@@ -61,12 +67,19 @@ function renderBox(labels, agentName) {
             }
             numArray.forEach(el => tipsRolled+= `${labels[el]}\n`);
             textArea.value = tipsRolled;
+            counter = 0;
+            span.innerText = `x${counter}`;
         };
     });
     legend.addEventListener('click', function() {
         textArea.select();
         textArea.setSelectionRange(0, 99999);
         document.execCommand("copy");
+        if (textArea.value !== "") {
+            counter += 1;
+            span.innerText = `x${counter}`;
+        }
+
     });
 }
 

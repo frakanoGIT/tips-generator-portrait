@@ -8,19 +8,39 @@
 /* LEGEND BACKGROUND COLOR*/
 
 .legend918KISS {
+    background-color: rgba(96, 62, 168, 0.8);
+}
+
+.legend918KISS:hover {
     background-color: rgba(96, 62, 168, 1);
+    cursor: pointer;
 }
 
 .legendMEGA888 {
+    background-color:rgba(243, 156, 18, 0.8);
+}
+
+.legendMEGA888:hover {
     background-color:rgba(243, 156, 18, 1);
+    cursor: pointer;
 }
 
 .legendPUSSY888 {
+    background-color: rgba(60, 141, 188, 0.8);
+}
+
+.legendPUSSY888:hover {
     background-color: rgba(60, 141, 188, 1);
+    cursor: pointer;
 }
 
 .legendXE88 {
+    background-color: rgba(0, 166, 90, 0.8);
+}
+
+.legendXE88:hover {
     background-color: rgba(0, 166, 90, 1);
+    cursor: pointer;
 }
 
 /* MAIN */
@@ -67,8 +87,9 @@ textarea {
 }
 
 .reroll {
-    border: 1px solid black;
     background-color: #f5e050;
+    cursor: pointer;
+    border: 1px solid black;
     margin: 4px;
 }
 

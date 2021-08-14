@@ -67,13 +67,21 @@ fieldset {
 
 legend {
     color: white;
-    font-weight: 600;
+    font-weight: 700;
     padding: 0 4px;
     border: 3px solid black;
     border-radius: 3px;
     margin-bottom: 4px;
     text-align: center;
     width: 90px;
+}
+.counter {
+    color: red;
+    font-size: 12px;
+    font-weight: 700;
+    position: relative;
+    left: 36%;
+    top: -18px;
 }
 
 textarea {

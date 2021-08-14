@@ -61,8 +61,12 @@ function renderBox(labels, agentName) {
             }
             numArray.forEach(el => tipsRolled+= `${labels[el]}\n`);
             textArea.value = tipsRolled;
-        }
-
+        };
+    });
+    legend.addEventListener('click', function() {
+        textArea.select();
+        textArea.setSelectionRange(0, 99999);
+        document.execCommand("copy");
     });
 }
 

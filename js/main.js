@@ -21,12 +21,18 @@ function renderBox(labels, agentName) {
     legend.setAttribute('class', `legend${agentName}`);
     legend.innerText = `${agentName}`;
     container.appendChild(legend);
-    // Create span element for counter click
-    let span = document.createElement('span');
-    var counter = 0;
-    span.setAttribute('class', 'counter');
-    span.innerText = `x${counter}`;
-    container.appendChild(span);
+    // Create for counter click
+    let countDiv = document.createElement('div');
+    countDiv.setAttribute('class', 'counter');
+    // Create input counter
+    let counter = 0;
+    for (let c = 0; c < 3; c++) {
+        let crSpan = document.createElement('span');
+        crSpan.setAttribute('id', `c${c}`);
+        crSpan.innerText = 0;
+        countDiv.appendChild(crSpan);
+    }
+    container.appendChild(countDiv);
     // Create textarea element
     let textArea = document.createElement('textarea');
     textArea.setAttribute('class',`inArea${agentName}`);
@@ -68,7 +74,9 @@ function renderBox(labels, agentName) {
             numArray.forEach(el => tipsRolled+= `${labels[el]}\n`);
             textArea.value = tipsRolled;
             counter = 0;
-            span.innerText = `x${counter}`;
+            countDiv.children[2].innerText = '0';
+            countDiv.children[1].innerText = '0';
+            countDiv.children[0].innerText = '0';
         };
     });
     legend.addEventListener('click', function() {
@@ -76,8 +84,22 @@ function renderBox(labels, agentName) {
         textArea.setSelectionRange(0, 99999);
         document.execCommand("copy");
         if (textArea.value !== "") {
-            counter += 1;
-            span.innerText = `x${counter}`;
+            counter++;
+            let countStr = counter.toString();
+            if (countStr.length === 1) {
+                countDiv.children[2].innerText = countStr[0];
+            } else if (countStr.length === 2) {
+                countDiv.children[2].innerText = countStr[1];
+                countDiv.children[1].innerText = countStr[0];
+            } else if ( countStr.length === 3) {
+                countDiv.children[2].innerText = countStr[2];
+                countDiv.children[1].innerText = countStr[1];
+                countDiv.children[0].innerText = countStr[0];
+            } else {
+                countDiv.children[2].innerText = '0';
+                countDiv.children[1].innerText = '0';
+                countDiv.children[0].innerText = '0';
+            }
         }
 
     });

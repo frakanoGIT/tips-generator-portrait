@@ -57,8 +57,8 @@ fieldset {
     width: 195px;
     padding: 0;
     border: 3px solid black;
-    border-radius: 3px;
-    margin: 3px auto 0 auto;
+    border-radius: 20px;
+    margin: 2px auto 0 auto;
     display: inline-flex;
     flex-wrap: wrap;
     align-items: center;
@@ -71,35 +71,60 @@ legend {
     padding: 0 4px;
     border: 3px solid black;
     border-radius: 3px;
-    margin-bottom: 4px;
+    margin-bottom: 2px;
     text-align: center;
     width: 90px;
 }
+
 .counter {
-    color: red;
-    font-size: 12px;
-    font-weight: 700;
-    margin: 0;
-    position: relative;
-    left: 36%;
-    top: -18px;
+    background-color: white;
+    width: 45px;
+    height: 14px;
+    padding: 1px;
+    border-top: 3px solid grey;
+    border-bottom: 3px solid grey;
+    border-left: 2px solid grey;
+    border-right: 2px solid grey;
+    margin-bottom: 2px; 
+    display: flex;
+    justify-content: space-around;
+    align-items: center; 
 }
 
+.counter span {
+    color: red;
+    font-weight: 700;
+    text-align: center;
+}
+
+.counter #c1 {
+    padding: 0 3px;
+    border-left: 2px solid grey;
+    border-right: 2px solid grey;
+}
 textarea {
     font-family: 'Space Mono', monospace;
-    font-size: 11px;
+    font-size: 11.3px;
     font-weight: 500;
     width: 95%;
-    height: 107px;
+    height: 102px;
     border: 2px solid black;
+    border-radius: 8px;
+    display: block;
     resize: none;
 }
 
 .reroll {
-    background-color: #f5e050;
+    background-color: rgba(245, 224, 80, 0.6);
+    color: black;
+    font-weight: 700;
     cursor: pointer;
-    border: 1px solid black;
-    margin: 4px;
+    border: 2px solid black;
+    border-radius: 3px;
+    margin: 3px;
+}
+.reroll:hover {
+    background-color: rgba(245, 224, 80, 1);
 }
 
 .btn-bottom {
@@ -108,8 +133,9 @@ textarea {
 }
             
 .btn-bottom input {
-    height: 20px;
+    height: 21px;
     width: 50.82px;
     border: 2px solid black;
+    border-radius: 3px;
 }
             

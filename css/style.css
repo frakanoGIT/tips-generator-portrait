@@ -54,11 +54,11 @@
 
 fieldset {
     background-color: lightgrey;
-    width: 180px;
+    width: 195px;
     padding: 0;
     border: 3px solid black;
     border-radius: 3px;
-    margin-top: 3px;
+    margin: 3px auto 0 auto;
     display: inline-flex;
     flex-wrap: wrap;
     align-items: center;
@@ -79,6 +79,7 @@ legend {
     color: red;
     font-size: 12px;
     font-weight: 700;
+    margin: 0;
     position: relative;
     left: 36%;
     top: -18px;

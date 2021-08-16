@@ -72,7 +72,7 @@ function renderBox(labels, agentName) {
                 }
             }
             numArray.forEach(el => tipsRolled+= `${labels[el]}\n`);
-            textArea.value = tipsRolled;
+            textArea.value = tipsRolled.slice(0,tipsRolled.length-1);
             counter = 0;
             countDiv.children[2].innerText = '0';
             countDiv.children[1].innerText = '0';

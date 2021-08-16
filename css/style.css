@@ -103,7 +103,7 @@ legend {
     border-right: 2px solid grey;
 }
 textarea {
-    background-color: #0000008b;
+    background-color: rgba(80, 80, 80, 1);
     color: white;
     font-family: 'Space Mono', monospace;
     font-size: 12.9px;

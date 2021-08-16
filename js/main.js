@@ -79,30 +79,37 @@ function renderBox(labels, agentName) {
             countDiv.children[0].innerText = '0';
         };
     });
+
+    textArea.addEventListener('copy',function(event) {
+        if (textArea.value !== "" && (textArea.select() || Clipboard)) {
+            counter++;
+            countToDisplay();
+        };
+    });
+
     legend.addEventListener('click', function() {
         textArea.select();
         textArea.setSelectionRange(0, 99999);
         document.execCommand("copy");
-        if (textArea.value !== "") {
-            counter++;
-            let countStr = counter.toString();
-            if (countStr.length === 1) {
-                countDiv.children[2].innerText = countStr[0];
-            } else if (countStr.length === 2) {
-                countDiv.children[2].innerText = countStr[1];
-                countDiv.children[1].innerText = countStr[0];
-            } else if ( countStr.length === 3) {
-                countDiv.children[2].innerText = countStr[2];
-                countDiv.children[1].innerText = countStr[1];
-                countDiv.children[0].innerText = countStr[0];
-            } else {
-                countDiv.children[2].innerText = '0';
-                countDiv.children[1].innerText = '0';
-                countDiv.children[0].innerText = '0';
-            }
-        }
-
     });
+
+    function countToDisplay() {
+        let countStr = counter.toString();
+        if (countStr.length === 1) {
+            countDiv.children[2].innerText = countStr[0];
+        } else if (countStr.length === 2) {
+            countDiv.children[2].innerText = countStr[1];
+            countDiv.children[1].innerText = countStr[0];
+        } else if ( countStr.length === 3) {
+            countDiv.children[2].innerText = countStr[2];
+            countDiv.children[1].innerText = countStr[1];
+            countDiv.children[0].innerText = countStr[0];
+        } else {
+            countDiv.children[2].innerText = '0';
+            countDiv.children[1].innerText = '0';
+            countDiv.children[0].innerText = '0';
+        }
+    }
 }
 
 export {renderBox};

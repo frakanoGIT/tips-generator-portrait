@@ -53,7 +53,7 @@
 }
 
 fieldset {
-    background-color: lightgrey;
+    background-image: linear-gradient(to right, grey, lightgrey);
     width: 195px;
     padding: 0;
     border: 3px solid black;

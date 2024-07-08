@@ -1,74 +1,115 @@
-// Import statements remain the same
+// IMPORT FUNCTION
 import { listKiss, listMega, listPussy, listXe } from "./gameData.js";
 
-// Function to create a new fieldset box
+// TIPS-GENERATOR ------------------------------------------------------
+const kiss = listKiss();
+const mega = listMega();
+const pussy = listPussy();
+const xe = listXe();
+
+// Create box for every agent games
+renderBox(kiss, '918KISS');
+renderBox(mega, 'MEGA888');
+renderBox(pussy, 'PUSSY888');
+renderBox(xe, 'XE88');
+
+// function will create a new fieldset box
 function renderBox(labels, agentName) {
     const container = document.createElement('fieldset');
-    container.innerHTML = `
-        <legend class="legend${agentName}">${agentName}</legend>
-        <div class="counter">
-            <span id="c2">0</span>
-            <span id="c1">0</span>
-            <span id="c0">0</span>
-        </div>
-        <textarea class="inArea${agentName}"></textarea>
-        <div class="btn-bottom">
-            <input class="tipsGame${agentName}" type="number">
-            <button class="reroll ${agentName}">Reroll</button>
-        </div>
-    `;
-
-    // Append container to main element
+    // Create legend element
+    let legend = document.createElement('legend');
+    legend.setAttribute('class', `legend${agentName}`);
+    legend.innerText = `${agentName}`;
+    container.appendChild(legend);
+    // Create for counter click
+    let countDiv = document.createElement('div');
+    countDiv.setAttribute('class', 'counter');
+    // Create input counter
+    let counter = 0;
+    for (let c = 0; c < 3; c++) {
+        let crSpan = document.createElement('span');
+        crSpan.setAttribute('id', `c${c}`);
+        crSpan.innerText = 0;
+        countDiv.appendChild(crSpan);
+    }
+    container.appendChild(countDiv);
+    // Create textarea element
+    let textArea = document.createElement('textarea');
+    textArea.setAttribute('class',`inArea${agentName}`);
+    textArea.value = "";
+    container.appendChild(textArea);
+    // Create div element
+    let divBtn = document.createElement('div');
+    divBtn.setAttribute('class', 'btn-bottom');
+    // Create input element for inside div class btn-bottom
+    let inputElement = document.createElement('input');
+    inputElement.setAttribute('class', `tipsGame${agentName}`);
+    inputElement.setAttribute('type', 'number');
+    divBtn.appendChild(inputElement);
+    // Create button element for re-rolling
+    let reRoll = document.createElement('button');
+    reRoll.setAttribute('class', `reroll ${agentName}`);
+    reRoll.innerHTML = 'Reroll';
+    divBtn.appendChild(reRoll);
+    container.appendChild(divBtn);
+    // Add renderBox to HTML class container
     document.getElementById('main').appendChild(container);
 
-    // Event listeners
-    const textArea = container.querySelector(`.inArea${agentName}`);
-    const inputElement = container.querySelector(`.tipsGame${agentName}`);
-    const reRoll = container.querySelector(`.reroll.${agentName}`);
-    const countDiv = container.querySelector('.counter');
-    let counter = 0;
-
-    reRoll.addEventListener('click', () => {
-        const numInput = parseInt(inputElement.value);
-        const numArray = [];
-
-        if (numInput > labels.length || numInput <= 0) {
-            textArea.value = `Please input value between 1 ~ ${labels.length}!`;
+    //
+    reRoll.addEventListener('click', function() {
+        let numInput = inputElement.value;
+        let numArray = [];
+        let tipsRolled = '';
+        // Remove Duplicates and prevent crash
+        if (numInput > labels.length || numInput < 0) {
+            textArea.value = "Please input value between 1 \~ " + labels.length + "!";
         } else {
             for (let n = numInput; n > 0;) {
-                const numGen = Math.floor(Math.random() * labels.length);
+                let numGen = Math.floor(Math.random() * labels.length);
                 if (!numArray.includes(numGen)) {
                     numArray.push(numGen);
                     n--;
                 }
             }
-            textArea.value = numArray.map(el => labels[el]).join('\n');
+            numArray.forEach(el => tipsRolled+= `${labels[el]}\n`);
+            textArea.value = tipsRolled.slice(0,tipsRolled.length-1);
             counter = 0;
-            [...countDiv.children].forEach((span, index) => span.innerText = '0');
-        }
+            countDiv.children[2].innerText = '0';
+            countDiv.children[1].innerText = '0';
+            countDiv.children[0].innerText = '0';
+        };
     });
 
-    textArea.addEventListener('copy', () => {
-        if (textArea.value !== "") {
+    textArea.addEventListener('copy',function(event) {
+        if (textArea.value !== "" && (textArea.select() || Clipboard)) {
             counter++;
             countToDisplay();
-        }
+        };
     });
 
-    container.querySelector('legend').addEventListener('click', () => {
+    legend.addEventListener('click', function() {
         textArea.select();
         textArea.setSelectionRange(0, 99999);
         document.execCommand("copy");
     });
 
     function countToDisplay() {
-        const countStr = counter.toString().padStart(3, '0');
-        [...countDiv.children].forEach((span, index) => span.innerText = countStr[index]);
+        let countStr = counter.toString();
+        if (countStr.length === 1) {
+            countDiv.children[2].innerText = countStr[0];
+        } else if (countStr.length === 2) {
+            countDiv.children[2].innerText = countStr[1];
+            countDiv.children[1].innerText = countStr[0];
+        } else if ( countStr.length === 3) {
+            countDiv.children[2].innerText = countStr[2];
+            countDiv.children[1].innerText = countStr[1];
+            countDiv.children[0].innerText = countStr[0];
+        } else {
+            countDiv.children[2].innerText = '0';
+            countDiv.children[1].innerText = '0';
+            countDiv.children[0].innerText = '0';
+        }
     }
 }
 
-// Initialize rendering for each game platform
-renderBox(listKiss(), '918KISS');
-renderBox(listMega(), 'MEGA888');
-renderBox(listPussy(), 'PUSSY888');
-renderBox(listXe(), 'XE88');
+export {renderBox};
